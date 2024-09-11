@@ -1,5 +1,5 @@
 import path from 'path';
-import { execSync } from 'child_process';
+// import { execSync } from 'child_process';
 
 export const config = {
     //
@@ -8,7 +8,7 @@ export const config = {
     // ====================
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
-    port: 4723,
+    // port: 4723,
     //
     // ==================
     // Specify Test Files
@@ -56,8 +56,8 @@ export const config = {
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
         platformName: 'Android',
-        'appium:deviceName': 'emulator-5554',
-        'appium:platformVersion': '11.0',
+        'appium:deviceName': 'R58R777L6JL',
+        'appium:platformVersion': '14.0',
         'appium:automationName': 'UiAutomator2',
         "appium:app": path.join(process.cwd(), "./app/android/ApiDemos-debug.apk")
     }],
@@ -111,7 +111,16 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['appium'],
+    
+    services: [
+      ['appium', {
+          command: 'appium',
+          args: {
+              // Here you can specify the port
+              port: 4724,
+          }
+      }]
+  ],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -156,15 +165,15 @@ export const config = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    onPrepare: () => {
-        try {
-          console.log('Killing any process running on port 4723...');
-          execSync('npx kill-port 4723', { stdio: 'inherit' });
-        } catch (error) {
-          console.error('Failed to kill port 4723', error);
-          process.exit(1); // Exit if the port cannot be killed
-        }
-      },
+    // onPrepare: () => {
+    //     try {
+    //       console.log('Killing any process running on port 4724...');
+    //       execSync('npx kill-port 4724', { stdio: 'inherit' });
+    //     } catch (error) {
+    //       console.error('Failed to kill port 4724', error);
+    //       process.exit(1); // Exit if the port cannot be killed
+    //     }
+    //   },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.
