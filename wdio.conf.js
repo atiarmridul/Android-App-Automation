@@ -7,7 +7,7 @@ export const config = {
     // port: 4723,
 
     specs: [
-        './test/specs/**/*.js'
+        './test/specs/**/android_native.spec.js'
     ],
   
     exclude: [

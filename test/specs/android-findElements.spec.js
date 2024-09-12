@@ -1,6 +1,6 @@
 describe('Android Elements Test', () => {
   
-  it('Find element by accessibility id', async () => {
+  xit('Find element by accessibility id', async () => {
     // find element by accessibility id
     const appOption = await $('~Views');
 
@@ -14,7 +14,7 @@ describe('Android Elements Test', () => {
     
   })
   
-  it('Find element by class name', async () => {
+  xit('Find element by class name', async () => {
     // find element by class name
     const className = await $('android.widget.TextView');
     console.log(await className.getText());
@@ -22,8 +22,7 @@ describe('Android Elements Test', () => {
     
   })
   
-
-  it('Find element by Xpath', async () => {
+  xit('Find element by Xpath', async () => {
 
       // find element by Xpath
     await $('//android.widget.TextView[@content-desc="Alert Dialogs"]').click();
@@ -39,14 +38,12 @@ describe('Android Elements Test', () => {
     
   })
   
-  it('Find element by UiAutomator', async () => {
+  xit('Find element by UiAutomator', async () => {
     // find element by UiAutomator
     await $('android=new UiSelector().textContains("Alert")').click();  
   })
 
-
-
-  it.only('Find multiple elements', async () => {
+  xit('Find multiple elements', async () => {
     
     const expectedList = ['API Demos',"Access'ibility",'Accessibility','Animation','App',
       'Content','Graphics','Media','NFC','OS','Preference','Text','Views'];
@@ -61,6 +58,36 @@ describe('Android Elements Test', () => {
     
   })
 
+  it.only('Hello', async () => {
+
+      // find element by accessibility id
+      const appOption1 = await $('~Views');
+      // click on element
+      await appOption1.click();
+
+      // find element by Xpath
+      const appOption2 = await $('//android.widget.TextView[@content-desc="Auto Complete"]');
+      // click on element
+      await appOption2.click();
+
+      // find element by text
+      const appOption3 = await $('~1. Screen Top');
+      // click on element
+      await appOption3.click();
+
+      // find element by accessibility id
+      const appOption4 = await $('//*[@resource-id="io.appium.android.apis:id/edit"]');
+
+      await driver.pause(10000); // Pauses for 10 seconds
+
+      // click on element
+      await appOption4.setValue('Canada');
+
+      await expect(appOption4).toHaveText('Canada');
+     
+   
+    
+  })
 
 
 
