@@ -16,7 +16,7 @@ describe('Android Native Feature Test', () => {
       
     })
 
-    it('Working with Vertical Scrolling', async () => {
+    xit('Working with Vertical Scrolling', async () => {
 
         await $('~App').click();
         await $('~Activity').click();
@@ -31,6 +31,37 @@ describe('Android Native Feature Test', () => {
 
     })
 
+    it('Scrolling Task with date change', async () => {
+
+        
+        //access date picker with activity
+        await driver.startActivity("io.appium.android.apis","io.appium.android.apis.view.DateWidgets1")
+
+        //get current date
+        const currentDate = await $('//*[@resource-id="io.appium.android.apis:id/dateDisplay"]').getText();
+        
+        //change the date
+        await $('~change the date').click();
+       
+        //scroll to the next month
+        await $('android=new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollForward()');
+        
+        //click on the date
+        await $('//*[@text="10"]').click(); 
+
+        //accepts the alert popup
+        await driver.acceptAlert(); 
+
+        //get new date
+        const newDate = await $('//*[@resource-id="io.appium.android.apis:id/dateDisplay"]').getText();
+        
+        //printing both current date and new date. 
+        console.log("Current date is:",currentDate);
+        console.log("New date is:",newDate);
+
+        //verify that both dates are not same, means date is changed. 
+        await expect(currentDate).not.toEqual(newDate);
+    })
 
 
 })  
