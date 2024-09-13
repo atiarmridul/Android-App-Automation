@@ -2,7 +2,7 @@
 
 describe('Android Native Feature Test', () => {
   
-    it('Access a Activity directly', async () => {
+    xit('Access a Activity directly', async () => {
 
         await driver.startActivity("io.appium.android.apis","io.appium.android.apis.app.AlertDialogSamples")
 
@@ -15,4 +15,22 @@ describe('Android Native Feature Test', () => {
 
       
     })
+
+    it('Working with Vertical Scrolling', async () => {
+
+        await $('~App').click();
+        await $('~Activity').click();
+        //vertical scrollto the end, 1 time with speed of 5>> but this is not efficient. 
+        //await $('android=new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(1,5)')
+
+        //scrollTextIntoView >> this is efficient. 
+        await $('android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView("Secure Surfaces")').click();
+
+
+        // await expect($('~Secure Surfaces')).toExist();
+
+    })
+
+
+
 })  

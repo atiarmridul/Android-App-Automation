@@ -19,8 +19,8 @@ export const config = {
     capabilities: [{
      
         platformName: 'Android',
-        'appium:deviceName': 'R58R777L6JL',
-        'appium:platformVersion': '14.0',
+        'appium:deviceName': '46f1f87d',
+        'appium:platformVersion': '6.0',
         'appium:automationName': 'UiAutomator2',
         "appium:app": path.join(process.cwd(), "./app/android/ApiDemos-debug.apk")
     }],
