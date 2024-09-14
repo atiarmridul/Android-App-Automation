@@ -7,7 +7,7 @@ export const config = {
     // port: 4723,
 
     specs: [
-        './test/specs/**/android_native.spec.js'
+        './test/specs/android/color_note.spec.js'
     ],
   
     exclude: [
@@ -18,11 +18,18 @@ export const config = {
 
     capabilities: [{
      
-        platformName: 'Android',
-        'appium:deviceName': '46f1f87d',
-        'appium:platformVersion': '6.0',
-        'appium:automationName': 'UiAutomator2',
-        "appium:app": path.join(process.cwd(), "./app/android/ApiDemos-debug.apk")
+        platformName: "Android",
+        // "appium:deviceName": "R58R777L6JL",
+        // "appium:platformVersion": "14.0",
+        // "appium:deviceName": "46f1f87d",
+        // "appium:platformVersion": "6.0",
+        "appium:deviceName": "emulator-5554",
+        "appium:platformVersion": "11.0",
+        "appium:automationName": "UiAutomator2",
+        "appium:app": path.join(process.cwd(), "./app/android/ColorNote+Notepad.apk"),
+        "appium:autoGrantPermissions": true
+
+
     }],
 
     logLevel: 'info',

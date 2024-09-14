@@ -1,5 +1,5 @@
 {
-  "name": "appium-jun5",
+  "name": "android-application-practice",
   "type": "module",
   "devDependencies": {
     "@wdio/appium-service": "^8.38.2",
