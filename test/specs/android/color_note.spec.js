@@ -54,7 +54,7 @@ describe('Working on the colornote application. ', () => {
         //pause for 3sec
         await driver.pause(3000);
 
-        //Validating that note is created.
+        //Validating that note is deleted.
         await expect(await $('//*[@text="Add note"]')).toExist();
        
 
