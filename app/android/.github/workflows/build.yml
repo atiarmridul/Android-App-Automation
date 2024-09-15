@@ -1,0 +1,12 @@
+name: Android App automation 
+
+on: push
+
+jobs:
+  automated-api-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm inntall 
+      - run: npm run wdio
+      - run: npm run show-report
+      
