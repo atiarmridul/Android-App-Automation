@@ -1,3 +1,5 @@
+import allure from '@wdio/allure-reporter'; 
+import fs from 'fs';
 import path from 'path';
 // import { execSync } from 'child_process';
 
@@ -14,17 +16,35 @@ export const config = {
        
     ],
 
+    before: function (capabilities, specs) {
+        browser.maximizeWindow();
+        
+
+        const allureReportPath = path.join(process.cwd(), 'allure-report');
+        if (fs.existsSync(allureReportPath)) {
+            fs.rmdirSync(allureReportPath, { recursive: true });
+        } else {
+            console.log('Folder allure report does not exist');
+        }
+        const allureResultPath = path.join(process.cwd(), 'allure-results');
+        if (fs.existsSync(allureResultPath)) {
+            fs.rmdirSync(allureResultPath, { recursive: true });
+        } else {
+            console.log('Folder allure result does not exist');
+        }
+    },
+
     maxInstances: 10,
 
     capabilities: [{
      
         platformName: "Android",
-        // "appium:deviceName": "R58R777L6JL",
-        // "appium:platformVersion": "14.0",
+        "appium:deviceName": "R58R777L6JL",
+        "appium:platformVersion": "14.0",
         // "appium:deviceName": "46f1f87d",
         // "appium:platformVersion": "6.0",
-        "appium:deviceName": "emulator-5554",
-        "appium:platformVersion": "11.0",
+        // "appium:deviceName": "emulator-5554",
+        // "appium:platformVersion": "11.0",
         "appium:automationName": "UiAutomator2",
         "appium:app": path.join(process.cwd(), "./app/android/ColorNote+Notepad.apk"),
         "appium:autoGrantPermissions": true
@@ -53,9 +73,25 @@ export const config = {
       }]
   ],
 
+  afterTest: async function (test, context, { error, result, duration, passed, retries }) {
+    if (error) {
+        // Take screenshot
+        const screenshot = await driver.takeScreenshot();
+        // Attach screenshot to Allure report
+        allure.addAttachment('Screenshot on Failure', Buffer.from(screenshot, 'base64'), 'image/png');
+    }
+},
+
     framework: 'mocha',
 
-    reporters: ['spec'],
+    reporters: [
+        'spec',        
+        ['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+    }],
+],
 
     mochaOpts: {
         ui: 'bdd',

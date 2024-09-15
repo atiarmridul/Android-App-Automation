@@ -2,6 +2,7 @@
   "name": "android-application-practice",
   "type": "module",
   "devDependencies": {
+    "@wdio/allure-reporter": "^9.0.8",
     "@wdio/appium-service": "^8.38.2",
     "@wdio/cli": "^8.38.2",
     "@wdio/local-runner": "^8.38.2",
@@ -12,9 +13,12 @@
     "ts-node": "^10.9.2"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js"
+    "wdio": "wdio run ./wdio.conf.js",
+    "show-report": "allure generate --clean allure-results && allure open"
   },
   "dependencies": {
+    "allure": "^0.0.0",
+    "allure-commandline": "^2.30.0",
     "appium-uiautomator2-driver": "^3.7.9"
   }
 }
