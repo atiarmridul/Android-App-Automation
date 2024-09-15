@@ -6,7 +6,7 @@ jobs:
   automated-api-tests:
     runs-on: ubuntu-latest
     steps:
-      - run: npm inntall 
+      - run: npm install 
       - run: npm run wdio
       - run: npm run show-report
       
