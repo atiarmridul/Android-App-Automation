@@ -104,12 +104,14 @@ export const config = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
+    
+    // before solving the port problem, using this to kill the port to opPrepare
     // onPrepare: () => {
     //     try {
-    //       console.log('Killing any process running on port 4724...');
-    //       execSync('npx kill-port 4724', { stdio: 'inherit' });
+    //       console.log('Killing any process running on port 4723...');
+    //       execSync('npx kill-port 4723', { stdio: 'inherit' });
     //     } catch (error) {
-    //       console.error('Failed to kill port 4724', error);
+    //       console.error('Failed to kill port 4723', error);
     //       process.exit(1); // Exit if the port cannot be killed
     //     }
     //   },

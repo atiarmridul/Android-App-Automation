@@ -1,3 +1,6 @@
+import { $, $$, driver, expect } from '@wdio/globals';
+
+
 class addNoteScreen{
 
 get skipButton(){

@@ -1,3 +1,5 @@
+import { $, $$, driver, expect } from '@wdio/globals';
+
 import  addNoteScreen  from "../../screenobjects/android/add-note.screen.js";
 
 describe('Working on the colornote application. ', () => {
@@ -23,6 +25,7 @@ describe('Working on the colornote application. ', () => {
         await driver.back();
         //Validating that note is created.
         await expect(addNoteScreen.createNote).toExist();
+        
      })
 
      it('Deleting a note', async () => {
@@ -36,6 +39,7 @@ describe('Working on the colornote application. ', () => {
         await driver.acceptAlert();
         //Validating that note is deleted.
         await expect(addNoteScreen.addNote).toExist();
+
        
     })
 
