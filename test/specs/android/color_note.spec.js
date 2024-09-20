@@ -4,12 +4,10 @@ import  addNoteScreen  from "../../screenobjects/android/add-note.screen.js";
 
 describe('Working on the colornote application. ', () => {
   
-    it('Skipping the tutorial', async () => {
-       //skipping the tutorial
+    before(async () =>{
         await addNoteScreen.skipButton.click();
-
     })
-
+    
     it('Creating a note', async () => {
         //clicling the  button 
         await addNoteScreen.addNote.click();  
@@ -40,6 +38,7 @@ describe('Working on the colornote application. ', () => {
         //Validating that note is deleted.
         await expect(addNoteScreen.addNote).toExist();
 
+    
        
     })
 

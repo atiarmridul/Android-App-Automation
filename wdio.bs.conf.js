@@ -1,12 +1,15 @@
 import allure from '@wdio/allure-reporter'; 
 import fs from 'fs';
 import path from 'path';
-// import { execSync } from 'child_process';
+
 
 export const config = {
  
     runner: 'local',
-    // port: 4723,
+
+    user: process.env.BROWSERSTACK_USER,
+    key: process.env.BROWSERSTACK_KEY,
+
 
     specs: [
         './test/specs/android/color_note.spec.js'
@@ -16,36 +19,32 @@ export const config = {
        
     ],
 
-    before: function (capabilities, specs) {
-        browser.maximizeWindow();
+    // before: function (capabilities, specs) {
+    //     browser.maximizeWindow();
         
-        const allureReportPath = path.join(process.cwd(), 'allure-report');
-        if (fs.existsSync(allureReportPath)) {
-            fs.rmdirSync(allureReportPath, { recursive: true });
-        } else {
-            console.log('Folder allure report does not exist');
-        }
-        const allureResultPath = path.join(process.cwd(), 'allure-results');
-        if (fs.existsSync(allureResultPath)) {
-            fs.rmdirSync(allureResultPath, { recursive: true });
-        } else {
-            console.log('Folder allure result does not exist');
-        }
-    },
+    //     const allureReportPath = path.join(process.cwd(), 'allure-report');
+    //     if (fs.existsSync(allureReportPath)) {
+    //         fs.rmdirSync(allureReportPath, { recursive: true });
+    //     } else {
+    //         console.log('Folder allure report does not exist');
+    //     }
+    //     const allureResultPath = path.join(process.cwd(), 'allure-results');
+    //     if (fs.existsSync(allureResultPath)) {
+    //         fs.rmdirSync(allureResultPath, { recursive: true });
+    //     } else {
+    //         console.log('Folder allure result does not exist');
+    //     }
+    // },
 
     maxInstances: 10,
 
     capabilities: [{
      
         platformName: "Android",
-        "appium:deviceName": "R58R777L6JL",
-        "appium:platformVersion": "14.0",
-        // "appium:deviceName": "46f1f87d",
-        // "appium:platformVersion": "6.0",
-        // "appium:deviceName": "emulator-5554",
-        // "appium:platformVersion": "11.0",
+        "appium:deviceName": "Samsung Galaxy S22 Ultra",
+        "appium:platformVersion": "12.0",
         "appium:automationName": "UiAutomator2",
-        "appium:app": path.join(process.cwd(), "./app/android/ColorNote+Notepad.apk"),
+        "appium:app": ("bs://91ee489c0b1f3f5285fa6eb1136482e65a297044"),
         "appium:autoGrantPermissions": true
 
         
@@ -61,17 +60,9 @@ export const config = {
  
     connectionRetryCount: 3,
 
-    services: [
-      ['appium', {
-          command: 'appium',
-          args: {
-             
-              port: 4723,
-          }
-      }]
-  ],
 
 
+services: ['browserstack'],
 
   afterTest: async function (test, context, { error, result, duration, passed, retries }) {
     if (error) {
