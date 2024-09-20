@@ -1,0 +1,28 @@
+[90m2024-09-20T05:53:00.333Z[39m [32mDEBUG[39m [97m@wdio/browserstack-service[39m Sending SDK event with data {
+  userName: 'mdatiarrahmancho_6F0jYg',
+  accessKey: 'DfwTrwx3aGyzeDwn4Q4o',
+  event_type: 'SDKTestAttempted',
+  detectedFramework: 'WebdriverIO-mocha',
+  event_properties: {
+    language_framework: 'WebdriverIO_mocha',
+    referrer: 'WebdriverIO-mocha/9.0.8',
+    language: 'WebdriverIO',
+    languageVersion: 'v18.20.4',
+    buildName: 'undefined',
+    buildIdentifier: 'undefined',
+    os: 'Windows_NT',
+    hostname: 'Atiar-AITS',
+    productMap: {
+      observability: true,
+      accessibility: false,
+      percy: false,
+      automate: true,
+      app_automate: false
+    },
+    product: [ 'observability', 'automate' ]
+  }
+}
+[90m2024-09-20T05:53:02.088Z[39m [32mDEBUG[39m [97m@wdio/browserstack-service[39m Funnel Event Response: "{\"message\":\"SDK Event recorded successfully\"}"
+[90m2024-09-20T05:53:02.088Z[39m [32mDEBUG[39m [97m@wdio/browserstack-service[39m Funnel event success
+[90m2024-09-20T05:53:02.088Z[39m [32mDEBUG[39m [97m@wdio/browserstack-service[39m app is not defined in browserstack-service config, skipping ...
+[90m2024-09-20T05:53:02.089Z[39m [32mDEBUG[39m [97m@wdio/browserstack-service[39m Sending launch start event
